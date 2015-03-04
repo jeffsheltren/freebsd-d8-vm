@@ -1,3 +1,3 @@
 apache24:
-	pkg:
-		- installed
+  pkg:
+    - installed
