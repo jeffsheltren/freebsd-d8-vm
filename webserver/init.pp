@@ -1,6 +1,11 @@
 apache24:
   pkg:
     - installed
+  file.managed:
+    - name: /usr/local/etc/apache24/httpd.conf
+    - source: salt://webserver/httpd.conf
+  service.running:
+    enabled: true
 
 php_packages:
   pkg.latest:
