@@ -1,17 +1,29 @@
 apache24:
   pkg:
     - installed
+  service.running:
+    - enable: true
+
+apache24_main_config:
   file.managed:
     - name: /usr/local/etc/apache24/httpd.conf
     - source: salt://webserver/httpd.conf
+
+deflate_config:
   file.managed:
     - name: /usr/local/etc/apache24/Includes/mod_deflate.conf
     - source: salt://webserver/Includes/mod_deflate.conf
+
+mpm_config:
   file.managed:
     - name: /usr/local/etc/apache24/extra/httpd-mpm.conf
     - source: salt://webserver/extra/httpd-mpm.conf
+
+vhost_default_remove:
   file.absent:
     - name: /usr/local/etc/apache24/extra/httpd-vhosts.conf
+
+vhost_config:
   apache.configfile:
     - name: /usr/local/etc/apache24/Includes/d8dev.conf
     - config:
@@ -26,11 +38,6 @@ apache24:
             - Indexes
             - FollowSymLinks
           AllowOverride: all
-          Require:
-            - all
-            - granted
-  service.running:
-    - enable: true
 
 php_packages:
   pkg.latest:
