@@ -4,6 +4,31 @@ apache24:
   file.managed:
     - name: /usr/local/etc/apache24/httpd.conf
     - source: salt://webserver/httpd.conf
+  file.managed:
+    - name: /usr/local/etc/apache24/Includes/mod_deflate.conf
+    - source: salt://webserver/Includes/mod_deflate.conf
+  file.managed:
+    - name: /usr/local/etc/apache24/extra/httpd-mpm.conf
+    - source: salt://webserver/extra/httpd-mpm.conf
+  file.absent:
+    - name: /usr/local/etc/apache24/extra/httpd-vhosts.conf
+  apache.configfile:
+    - name: /usr/local/etc/apache24/Includes/d8dev.conf
+    - config:
+      - VirtualHost
+        this: '*:8080'
+        ServerName:
+          - d8.tag1consulting.com
+        DocumentRoot: /data/www/d8-tag1consulting.com
+        Directory:
+          - this: /data/d8-tag1consulting.com
+          Options: 
+            - Indexes
+            - FollowSymLinks
+          AllowOverride: all
+          Require:
+            - all
+            - granted
   service.running:
     - enable: true
 
