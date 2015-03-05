@@ -27,13 +27,13 @@ vhost_config:
   apache.configfile:
     - name: /usr/local/etc/apache24/Includes/d8dev.conf
     - config:
-      - VirtualHost
+      - VirtualHost:
         this: '*:8080'
         ServerName:
           - d8.tag1consulting.com
         DocumentRoot: /data/www/d8-tag1consulting.com
         Directory:
-          - this: /data/d8-tag1consulting.com
+          this: /data/d8-tag1consulting.com
           Options: 
             - Indexes
             - FollowSymLinks
