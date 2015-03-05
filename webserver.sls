@@ -4,7 +4,7 @@ apache24:
 
 php_packages:
   pkg.latest:
-    pkgs:
+    - pkgs:
       - mod_php56
       - php56
       - php56-bcmath
