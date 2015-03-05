@@ -2,3 +2,4 @@ base:
   '*':
     - webserver
     - db
+    - varnish
