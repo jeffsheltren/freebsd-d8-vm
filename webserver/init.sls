@@ -5,7 +5,7 @@ apache24:
     - name: /usr/local/etc/apache24/httpd.conf
     - source: salt://webserver/httpd.conf
   service.running:
-    - enabled: true
+    - enable: true
 
 php_packages:
   pkg.latest:
