@@ -38,6 +38,9 @@ vhost_config:
             - Indexes
             - FollowSymLinks
           AllowOverride: all
+          Require:
+            - all
+            - granted
 
 php_packages:
   pkg.latest:
