@@ -23,24 +23,10 @@ vhost_default_remove:
   file.absent:
     - name: /usr/local/etc/apache24/extra/httpd-vhosts.conf
 
-vhost_config:
-  apache.configfile:
+tag1_site:
+  file.managed:
     - name: /usr/local/etc/apache24/Includes/d8dev.conf
-    - config:
-      - VirtualHost:
-        this: '*:8080'
-        ServerName:
-          - d8.tag1consulting.com
-        DocumentRoot: /data/www/d8-tag1consulting.com
-        Directory:
-          this: /data/d8-tag1consulting.com
-          Options: 
-            - Indexes
-            - FollowSymLinks
-          AllowOverride: all
-          Require:
-            - all
-            - granted
+    - source: salt://webserver/Includes/d8dev.conf
 
 php_packages:
   pkg.latest:
@@ -61,17 +47,13 @@ php_packages:
       - php56-gmp
       - php56-hash
       - php56-iconv
-      - php56-imap
-      - php56-interbase
       - php56-json
-      - php56-ldap
       - php56-mbstring
       - php56-mcrypt
       - php56-mysql
       - php56-mysqli
       - php56-opcache
       - php56-openssl
-      - php56-pcntl
       - php56-pdo
       - php56-pdo_mysql
       - php56-pdo_sqlite
@@ -82,14 +64,10 @@ php_packages:
       - php56-session
       - php56-shmop
       - php56-simplexml
-      - php56-snmp
-      - php56-soap
-      - php56-sockets
       - php56-sqlite3
       - php56-sysvmsg
       - php56-sysvsem
       - php56-sysvshm
-      - php56-tidy
       - php56-tokenizer
       - php56-wddx
       - php56-xml
