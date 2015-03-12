@@ -2,7 +2,7 @@ varnish:
   pkg.installed:
     - name: varnish
   service.running:
-    - name: varnish
+    - name: varnishd
     - enable: True
     - reload: True
     - require:
