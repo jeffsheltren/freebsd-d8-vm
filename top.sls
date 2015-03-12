@@ -1,6 +1,6 @@
 base:
   '*':
     - webserver
-    - db
+    - mariadb
     - varnish
     - static
