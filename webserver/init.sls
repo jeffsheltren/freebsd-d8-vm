@@ -28,6 +28,11 @@ tag1_site:
     - name: /usr/local/etc/apache24/Includes/d8dev.conf
     - source: salt://webserver/Includes/d8dev.conf
 
+tag1_local_site:
+  file.managed:
+    - name: /usr/local/etc/apache24/Includes/d8localdev.conf
+    - source: salt://webserver/Includes/d8localdev.conf
+
 php_packages:
   pkg.latest:
     - pkgs:
