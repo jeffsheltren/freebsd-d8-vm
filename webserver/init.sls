@@ -3,6 +3,13 @@ apache24:
     - installed
   service.running:
     - enable: true
+    - reload: True
+    - require:
+      - file: tag1_site
+      - file: tag1_local_site
+    - watch:
+      - file: tag1_site
+      - file: tag1_local_site
 
 apache24_main_config:
   file.managed:
