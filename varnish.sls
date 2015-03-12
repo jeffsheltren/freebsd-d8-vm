@@ -1,2 +1,0 @@
-varnish:
-  pkg.installed
