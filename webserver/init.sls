@@ -77,3 +77,18 @@ php_packages:
       - php56-xsl
       - php56-zip
       - php56-zlib
+
+php_module_config:
+  file.managed:
+    - name: /usr/local/etc/php/opcache.ini
+    - source: salt://webserver/php/opcache.ini
+
+php_config:
+  file.managed:
+    - name: /usr/local/etc/php.ini-production
+    - source: salt://webserver/php.ini-production
+
+/usr/local/etc/php.ini:
+  file.symlink:
+    - target: /usr/local/etc/php.ini-production
+
