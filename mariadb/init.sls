@@ -3,11 +3,13 @@ maria_packages:
     - pkgs:
       - mariadb100-server
       - mariadb100-client
+
+maria:
   service.running:
     - name: mysql-server
     - enable: True
     - require:
-      - pkg: mariadb100-server
+      - pkg: maria_packages
     - watch:
       - file: /usr/local/etc/my.cnf
 
