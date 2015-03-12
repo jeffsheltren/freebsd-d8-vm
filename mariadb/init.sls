@@ -13,5 +13,5 @@ maria_packages:
 
 /usr/local/etc/my.cnf:
   file.managed:
-    source: salt://mariadb/my.cnf
+    - source: salt://mariadb/my.cnf
   
